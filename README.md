@@ -23,4 +23,91 @@ public class MeshGenerator : MonoBehaviour
     }
 ```
 
- So in the image above, point 0, 1 and 5 are creating a triagle. This will be put into the triagles arrey in the form: 0, 1, 5. This means that the amount of triagles in a plane are ```jo``` jo
+ So in the image above, point 0, 1 and 5 are creating a triagle. This will be put into the triagles arrey in the form: 0, 1, 5. The amount of triagles in a plane is:
+ 
+ ## Full Code
+ ```
+ using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(MeshFilter))]
+public class MeshGenerator : MonoBehaviour
+{
+    public int width;
+    public int height;
+    public float amplitude;
+    public float speed;
+
+    Mesh mesh;
+
+    public Vector3[] vertices;
+    public int[] triangles;
+    float point = 0;
+
+    void Start()
+    {
+        mesh = new Mesh();
+        GetComponent<MeshFilter>().mesh = mesh;
+
+        CreatShape();
+        UpdateMesh();
+    }
+
+    void CreatShape()
+    {
+        vertices = new Vector3[width * height];
+        for (int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                vertices[(y * height) + x] = new Vector3(x,0,y);
+            }
+        }
+
+        int i = 0;
+        triangles = new int[((width - 1) * (height - 1)) * 6];
+        for (int y = 0; y < (height - 1); y++){
+            for(int x = 0; x < (width - 1); x++){
+                triangles[i] = ((y * height) + x);
+                triangles[i+1] = ((y * height) + x)+1+width;
+                triangles[i+2] = ((y * height) + x)+width;
+                
+                triangles[i+3] = ((y * height) + x)+1;
+                triangles[i+4] = ((y * height) + x)+1+width;
+                triangles[i+5] = ((y * height) + x);
+                i += 6;
+            }
+        }
+    }
+
+    void UpdateMesh()
+    {
+        mesh.Clear();
+        vertices = new Vector3[0];
+        vertices = new Vector3[width * height];
+
+        for (int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                if(y%2 == 0){
+                    vertices[(y * height) + x] = new Vector3(x,(Mathf.Cos(point+(y * height) + x)) * amplitude,y);
+                }
+                else{
+                    vertices[(y * height) + x] = new Vector3(x,(Mathf.Sin(point+(y * height) + x)) * amplitude,y);
+                }
+                
+            }
+        }
+
+        mesh.vertices = vertices;
+        mesh.triangles = triangles;
+
+        mesh.RecalculateNormals();
+    }
+
+    void Update()
+    {
+        point += speed * Time.deltaTime;
+        UpdateMesh();
+    }
+}
+
+ ```
