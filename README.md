@@ -1,5 +1,8 @@
 # Wave Simulation
 
+This simulation is made in the ```Unity game engine``` and ```c#```
+
+#Approach
 To simulate a wave, a custom and adaptable plane will be required. A plane can be drawn trough script in the unity game engine. A plane exist out of squares, that is divided into triangles. This is shown in the image below.
 
 <img src="https://www.patrykgalach.com/wp-content/uploads/2019/07/Zrzut-ekranu-2019-07-29-o-11.40.16-768x667.png" width="600" height="500">
