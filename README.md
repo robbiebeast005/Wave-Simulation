@@ -15,7 +15,7 @@ foreach(int number in numberList)
 # Civilisation-Simulation
 
 This is a if statement
-```javascript
+```c++
 List<int> numberList = new List<int>();
 int total;
 
