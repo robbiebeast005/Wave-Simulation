@@ -11,4 +11,16 @@ foreach(int number in numberList)
 }
 ```
 
-Lame text
+
+# Civilisation-Simulation
+
+This is a if statement
+```csharp
+List<int> numberList = new List<int>();
+int total;
+
+foreach(int number in numberList)
+{
+    total += numer;
+}
+```
