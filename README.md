@@ -26,7 +26,8 @@ public class MeshGenerator : MonoBehaviour
  So in the image above, point 0, 1 and 5 are creating a triagle. This will be put into the triagles arrey in the form: 0, 1, 5. The amount of triagles in a plane is:
  
  ## Full Code
- ```
+ 
+ ```ruby
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
