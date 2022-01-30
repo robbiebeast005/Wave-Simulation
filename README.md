@@ -1,7 +1,7 @@
 # Civilisation-Simulation
 
 This here is a simple for loop
-```javascript
+```express
 List<int> numberList = new List<int>();
 int total;
 
