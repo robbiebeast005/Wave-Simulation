@@ -1,7 +1,7 @@
 # Civilisation-Simulation
 
 This here is a simple for loop
-```RUBY
+```javascript
 List<int> numberList = new List<int>();
 int total;
 
@@ -15,7 +15,7 @@ foreach(int number in numberList)
 # Civilisation-Simulation
 
 This is a if statement
-```csharp
+```javascript
 List<int> numberList = new List<int>();
 int total;
 
