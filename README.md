@@ -2,7 +2,7 @@
 
 This here is a simple for loop
 
-<img src="https://www.patrykgalach.com/wp-content/uploads/2019/07/Zrzut-ekranu-2019-07-29-o-11.40.16-768x667.png" width="500" height="500">
+<img src="https://www.patrykgalach.com/wp-content/uploads/2019/07/Zrzut-ekranu-2019-07-29-o-11.40.16-768x667.png" width="600" height="500">
 
 ```ruby
 List<int> numberList = new List<int>();
