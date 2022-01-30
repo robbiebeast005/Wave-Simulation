@@ -2,7 +2,7 @@
 
 This here is a simple for loop
 
-![This is an image](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.patrykgalach.com%2F2019%2F07%2F29%2Fprocedural-terrain-pt1-plane%2F&psig=AOvVaw2YkUi_XjUceJR875j7bLDR&ust=1643666802128000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPiAx5C-2vUCFQAAAAAdAAAAABAS)
+![This is an image](https://www.patrykgalach.com/wp-content/uploads/2019/07/Zrzut-ekranu-2019-07-29-o-11.40.16-768x667.png)
 ```ruby
 List<int> numberList = new List<int>();
 int total;
