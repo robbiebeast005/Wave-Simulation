@@ -97,6 +97,7 @@ Now we mesh with adjustable vertices has been created.
 
 ## Waves
 
+For the simulation of a wave, a sin and cosin will be used. By giving a sin a continuing progressing value, a wave 
  ## Full Code
  
  ```ruby
