@@ -14,7 +14,7 @@ To simulate a wave, a custom and adaptable plane will be required. A plane can b
 
 In order to create a custom plane, there has to be a gameobject with a mesh filter and a mesh renderer. If both components are added to a gameobject, a script can be created as well. A mesh renderer can draw a plane if all the point in the above shown image are passed to the component. The variables needed are the position of the vertices and the points that create a triagle. All this information leads to the belown shown code.
 
-
+/
 ```ruby
 [RequireComponent(typeof(MeshFilter))]
 public class MeshGenerator : MonoBehaviour
@@ -30,11 +30,11 @@ public class MeshGenerator : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh;
     }
 ```
-.
+/
 
 We want to have full control over the size of the plane. Therefore, a ```height``` and ```width``` variable will be created. To position the points of the plane in the scene, a double for loop we be used. By looping through all the width values in a loop through all the height values, all points will get a value. This is becasue ```height x width``` is equal to the amount of vertices in a plane. By impelemting the code shown below, a array with all the vertices of the plane will be created.
 
-.
+/
 ```ruby
 vertices = new Vector3[width * height];
 
@@ -44,7 +44,7 @@ for (int y = 0; y < height; y++){
     }
 }
 ```
-
+/
 A similar aproach will be done for the triagles. Lets begin with determining the length of the array. The amount of squares in the plane is calculated by multiplying ```(width - 1) x (height - 1)```. The amount of triangles per square is 2 and the amount of vertices per triagle is 3. So in onder to create all triangles, an array with the lenght of ```((width - 1) x (height - 1)) x 6``` will be needed.
 
  
