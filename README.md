@@ -32,7 +32,7 @@ public class MeshGenerator : MonoBehaviour
     }
 ```
 <br>
-We want to have full control over the size of the plane. Therefore, a ```height``` and ```width``` variable will be created. To position the points of the plane in the scene, a double for loop we be used. By looping through the height and width, all points will get a value. This is becasue ```height x width``` is equal to the amout of points in a plane.
+We want to have full control over the size of the plane. Therefore, a ```height``` and ```width``` variable will be created. To position the points of the plane in the scene, a double for loop we be used. By looping through all the width values in a loop through all the height values, all points will get a value. This is becasue ```height x width``` is equal to the amout of points in a plane.
 
  
  ## Full Code
