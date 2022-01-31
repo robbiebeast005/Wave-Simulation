@@ -32,7 +32,17 @@ public class MeshGenerator : MonoBehaviour
     }
 ```
 <br>
-We want to have full control over the size of the plane. Therefore, a ```height``` and ```width``` variable will be created. To position the points of the plane in the scene, a double for loop we be used. By looping through all the width values in a loop through all the height values, all points will get a value. This is becasue ```height x width``` is equal to the amout of points in a plane.
+We want to have full control over the size of the plane. Therefore, a ```height``` and ```width``` variable will be created. To position the points of the plane in the scene, a double for loop we be used. By looping through all the width values in a loop through all the height values, all points will get a value. This is becasue ```height x width``` is equal to the amount of vertices in a plane. By impelemting the code shown below, a array with all the vertices of the plane will be created.
+
+```ruby
+vertices = new Vector3[width * height];
+for (int y = 0; y < height; y++){
+    for(int x = 0; x < width; x++){
+        vertices[(y * height) + x] = new Vector3(x,0,y);
+    }
+}
+```
+A similar aproach will be done for the triagles. Lets begin with determining the length of the array. The amount of squares in the plane is calculated by multiplying ```(width - 1) x (height - 1)```. The amount of triangles per square is 2 and the amount of vertices per triagle is 3. So in onder to create all triangles, an array with the lenght of ```((width - 1) x (height - 1)) x 6``` will be needed.
 
  
  ## Full Code
