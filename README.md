@@ -2,11 +2,12 @@
 
 This simulation has been made with the ```Unity game engine``` and ```c#```
 
-# Approach
+## Approach
 * Create adaptable plane 
 * Modefy plane
 * Use shader to create cool looks
 
+## Custom mesh
 
 To simulate a wave, a custom and adaptable plane will be required. A plane can be drawn trough script in the unity game engine. A plane exist out of squares, that is divided into triangles. This is shown in the image below.
 
@@ -45,9 +46,57 @@ for (int y = 0; y < height; y++){
 }
 ```
 ---
-A similar aproach will be done for the triagles. Lets begin with determining the length of the array. The amount of squares in the plane is calculated by multiplying ```(width - 1) x (height - 1)```. The amount of triangles per square is 2 and the amount of vertices per triagle is 3. So in onder to create all triangles, an array with the lenght of ```((width - 1) x (height - 1)) x 6``` will be needed. Now all the vertices that create a triagle need to be added to the array. Insted of the image shown above, the plane that will be created will have a value of 0 in the top right insted of bottem left. This gives that if we begin at vertex 0, we can create triagle (0, 5, 4) and (0, 5, 1). It could also be discribed as ```(vertex, vertex + vertex + 1, width)``` and ```(vertex, vertex + width + 1, vertex + 1)```. This notation works for every vertex, so per vertex, two triagles can be created. With this approach we dont need
 
- 
+A similar aproach will be done for the triagles. Lets begin with determining the length of the array. The amount of squares in the plane is calculated by multiplying ```(width - 1) x (height - 1)```. The amount of triangles per square is 2 and the amount of vertices per triagle is 3. So in onder to create all triangles, an array with the lenght of ```((width - 1) x (height - 1)) x 6``` will be needed. Now all the vertices that create a triagle need to be added to the array. Insted of the image shown above, the plane that will be created will have a value of 0 in the top right insted of bottem left. This gives that if we begin at vertex 0, we can create triagle (0, 5, 4) and (0, 5, 1). It could also be discribed as ```(vertex, vertex + vertex + 1, width)``` and ```(vertex, vertex + width + 1, vertex + 1)```. This notation works for every vertex, so per vertex, two triagles can be created. With this approach we dont need the side or under vertices. Therefore, looping through every vertex is unnecessary. In the code shown below, a custom loop and the conection of all the triagles e added.
+
+---
+```ruby
+
+int i = 0;
+triangles = new int[((width - 1) * (height - 1)) * 6];
+
+for (int y = 0; y < (height - 1); y++)
+{
+    for(int x = 0; x < (width - 1); x++)
+    {
+        triangles[i] = ((y * height) + x);
+        triangles[i+1] = ((y * height) + x)+1+width;
+        triangles[i+2] = ((y * height) + x)+width;
+                
+        triangles[i+3] = ((y * height) + x)+1;
+        triangles[i+4] = ((y * height) + x)+1+width;
+        triangles[i+5] = ((y * height) + x);
+        i += 6;
+    }
+}
+
+```
+---
+
+The calculations for the vertices and triagles are all done in a ```CreateShape()``` function. 
+
+Now that we have all the needed variables, the only thing left to do is to give the information to the mesh renderer. This will be done inside the ```UpdateMesh()``` function. By clearing the mesh and applying the arrays to the mesh, a custom mesh will be drawn when the scene runs. The ```RecalculateNormals()``` function makes sure that al lighting applyed to the mesh is handeled proppely.
+
+---
+```ruby
+
+void UpdateMesh()
+{
+    mesh.Clear();
+    
+    mesh.vertices = vertices;
+    mesh.triangles = triangles;
+
+    mesh.RecalculateNormals();
+
+}
+```
+---
+
+Now we mesh with adjustable vertices has been created.
+
+## Waves
+
  ## Full Code
  
  ```ruby
